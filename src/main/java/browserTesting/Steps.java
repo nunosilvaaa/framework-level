@@ -48,4 +48,12 @@ public class Steps {
         Thread.sleep(5*1000);
         Assert.assertEquals(price, driver.findElement(By.id("price")).getText());
     }
+
+/*
+    @Then("^I attach file \"(.*)\"$")
+    public void	attachFile(String file) throws  {
+        WebElement uploadElement = driver.findElement(By.id("attachment"));
+        uploadElement.sendKeys(file);
+    }
+*/
 }
