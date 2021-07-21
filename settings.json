@@ -1,0 +1,12 @@
+{
+    "webTesting": 
+    {
+    	"baseUri": "https://reqres.in/api",
+    	"basePaths":
+    	{
+    		"usersPath": "/users",
+    		"registerPath": "/register",
+    		"loginPath": "/login"
+    	}
+    }
+}
