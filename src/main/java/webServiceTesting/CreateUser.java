@@ -6,15 +6,15 @@ import webServiceTesting.models.Root;
 import webServiceTesting.utils.Globals;
 
 import org.json.simple.JSONObject;
-//import webServiceTesting.Globals;
+
 
 public class CreateUser {
-  private static Root configRoot = Globals.getWebTestingObject();
-  private String name;
-  private String surname;
-  private String job;
+  public static Root configRoot = Globals.getWebTestingObject();
+  public String name;
+  public String surname;
+  public String job;
   
-  private RequestSpecification requestSpecification;
+  public RequestSpecification requestSpecification;
 
   /**
   * Creates RequestSpecification object and sets up BaseUri and BasePath for Users endpoint
@@ -54,11 +54,21 @@ public class CreateUser {
     return this.job;
   }
   
+  /*
+   * Adds the body to the request for later use
+   */
+  private void addBodyToRequest(JSONObject body){
+      this.requestSpecification =
+              RestAssured.given().body(body.toJSONString())
+	              .baseUri(configRoot.webTesting.baseUri)
+	              .basePath(configRoot.webTesting.basePaths.registerPath);
+  }
+  
   /**
   * Creates User object with name and job parameters
   * @return JSONObject: Object in relation to the user
   */
-  private JSONObject getJsonUserObject(String name, String job) {
+  public JSONObject getJsonUserObject(String name, String job) {
       JSONObject userObj = new JSONObject();
       userObj.put("name", name);
       userObj.put("job", job);
@@ -71,6 +81,7 @@ public class CreateUser {
   */
   public JSONObject buildBody() {
 	  JSONObject userObj = getJsonUserObject(this.name, this.job);
+	  addBodyToRequest(userObj);
 	  return userObj;
   }
   
@@ -79,7 +90,8 @@ public class CreateUser {
   * @return JSONObject: Object in relation to the user (e.g. {"name": "testName autoSurname", "job": "testJob"})
   */
   public JSONObject buildBodyWithSurname() {
-      JSONObject userObj = getJsonUserObject("%s %s".formatted(this.name, this.surname), this.job);
+      JSONObject userObj = getJsonUserObject(String.format("%s %s",this.name, this.surname), this.job);
+      addBodyToRequest(userObj);
 	  return userObj;
   }
 }

@@ -45,13 +45,32 @@ public class RegisterUser {
   public String getPassword() {
     return this.password;
   }
+  
+  /*
+   * Adds the body to the request for later use
+   */
+  private void addBodyToRequest(JSONObject body){
+      this.requestSpecification =
+              RestAssured.given().body(body.toJSONString())
+	              .baseUri(configRoot.webTesting.baseUri)
+	              .basePath(configRoot.webTesting.basePaths.registerPath);
+  }
 
-  private JSONObject getJsonUserObject(String name) {
+  /**
+  * Creates User object with email parameter
+  * @return JSONObject: Object containing only the email parameter
+  */
+  private JSONObject getJsonUserObject(String email) {
       JSONObject userObj = new JSONObject();
       userObj.put("email", this.email);
       return userObj;
   }
-  private JSONObject getJsonUserObject(String name, String job) {
+  
+  /**
+   * Creates User object with email and password parameters
+   * @return JSONObject: Object containing the email and password parameters 
+   */
+  private JSONObject getJsonUserObject(String email, String password) {
       JSONObject userObj = new JSONObject();
       userObj.put("email", this.email);
       userObj.put("password", this.password);
@@ -64,6 +83,7 @@ public class RegisterUser {
   */
   public JSONObject buildBodyWithEmail() {
 	  JSONObject userObj = getJsonUserObject(this.email);
+	  addBodyToRequest(userObj);
 	  return userObj;
   }
   
@@ -73,6 +93,7 @@ public class RegisterUser {
   */
   public JSONObject buildBodyWithEmailAndPassword() {
 	  JSONObject userObj = getJsonUserObject(this.email, this.password);
+	  addBodyToRequest(userObj);
 	  return userObj;
   }
 }
