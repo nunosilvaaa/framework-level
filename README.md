@@ -29,3 +29,39 @@ document to report it.
 
 **Note: The solution should be shared in your own Git repository. Make sure that you keep
 the Git commit history clean**
+
+## Installing framework-level
+
+To install framework-level, follow these steps:
+
+1. Clone or do a import project via Git referencing the latest version of [framework-level.git](https://github.com/nunosilvaaa/framework-level.git).
+2. Download the chromedriver according to your installed version (if installed) from [here](https://chromedriver.chromium.org/downloads).
+3. Setup the `settings.json` configuration file with the designated parameter values.
+4. Run the class TestRunner under the `src/test/java/unit` folder.
+
+## Configuration - settings.json 
+
+```sh
+{
+    "webTesting": 
+    {
+    	"baseUri": "https://reqres.in/api",
+    	"basePaths":
+    	{
+    		"usersPath": "/users",
+    		"registerPath": "/register",
+    		"loginPath": "/login"
+    	}
+    },
+    "staticPaths":
+    {
+     	"reportConfigPath": "src/test/resources/extent-config.xml",
+     	"chromeDriverPath": "src/test/resources/chromedriver.exe",
+     	"productSubscriptionPageURL": "https://qa-automation-challenge.github.io/sandbox/"
+    }
+}
+```
+
+## Reporting
+
+After the test run, the report will appear under `<root folder>/reports/report.html`
