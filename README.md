@@ -37,7 +37,6 @@ To install framework-level, follow these steps:
 1. Clone or do a import project via Git referencing the latest version of [framework-level.git](https://github.com/nunosilvaaa/framework-level.git).
 2. Download the chromedriver according to your installed version (if installed) from [here](https://chromedriver.chromium.org/downloads).
 3. Setup the `settings.json` configuration file with the designated parameter values.
-4. Run the class TestRunner under the `src/test/java/unit` folder.
 
 ## Configuration - settings.json 
 
@@ -61,6 +60,16 @@ To install framework-level, follow these steps:
     }
 }
 ```
+## Running Tests
+
+### Features
+
+* Run the class TestRunner under the `src/test/java/unit` folder in order to run all existing features.
+
+### UnitTests
+
+* Run the UnitTests present under `src/test/java/unit`.
+
 
 ## Reporting
 
