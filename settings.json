@@ -8,5 +8,11 @@
     		"registerPath": "/register",
     		"loginPath": "/login"
     	}
+    },
+    "staticPaths":
+    {
+     	"reportConfigPath": "src/test/resources/extent-config.xml",
+     	"chromeDriverPath": "src/test/resources/chromedriver.exe",
+     	"productSubscriptionPageURL": "https://qa-automation-challenge.github.io/sandbox/"
     }
 }
