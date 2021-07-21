@@ -1,7 +1,6 @@
 package webServiceTesting.unit;
 
 import org.junit.Test;
-import static org.hamcrest.Matchers.*;
 
 
 
@@ -22,8 +21,7 @@ public class LoginUserTest extends RegisterUserTest {
 	.when()
 		.post(loginPath)
 	.then()
-		.statusCode(200)
-		.body("token", equalTo("QpwL5tke4Pnpja7X4"));
+		.statusCode(200);
   }
   
   @Test
@@ -38,8 +36,7 @@ public class LoginUserTest extends RegisterUserTest {
 	.when()
 		.post(loginPath)
 	.then()
-		.statusCode(400)
-		.body("error", equalTo("Missing password"));
+		.statusCode(400);
   }
   
   

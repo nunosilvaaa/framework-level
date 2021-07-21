@@ -9,7 +9,7 @@ import webServiceTesting.CreateUser;
 import webServiceTesting.RegisterUser;
 import webServiceTesting.models.Root;
 import webServiceTesting.utils.Globals;
-import static org.hamcrest.Matchers.*;
+
 
 
 
@@ -58,8 +58,7 @@ public class RegisterUserTest {
 	.when()
 		.post(registerPath)
 	.then()
-		.statusCode(200)
-		.body("token", equalTo("QpwL5tke4Pnpja7X4"));
+		.statusCode(200);
   }
   
   @Test
@@ -74,8 +73,7 @@ public class RegisterUserTest {
 	.when()
 		.post(registerPath)
 	.then()
-		.statusCode(400)
-		.body("error", equalTo("Missing password"));
+		.statusCode(400);
   }
   
   
